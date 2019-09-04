@@ -7,10 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeeComponent implements OnInit {
   columnSpan = 2;
-  firstName = 'Abdul';
-  lastName = 'Shaikh';
-  gender = 'male';
-  age = 25;
+ 
   showDetails = false;
 
   toggleDetails(): void {

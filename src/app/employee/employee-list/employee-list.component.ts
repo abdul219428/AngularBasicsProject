@@ -37,7 +37,8 @@ export class EmployeeListComponent {
         gender: 'Male',
         annualSalary: 120000,
         dateOfBirth: '1/21/1983'
-      }
+      },
+
     ];
   }
 
@@ -77,6 +78,13 @@ export class EmployeeListComponent {
         gender: 'Male',
         annualSalary: 1280000,
         dateOfBirth: '9/26/1990'
+      },
+      {
+        code: 'emp106',
+        name: 'Jolyne Cujoh',
+        gender: 'Female',
+        annualSalary: 150000,
+        dateOfBirth: '1/21/1993'
       }
     ];
   }
