@@ -1,14 +1,13 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform } from "@angular/core";
 
 @Pipe({
   name: "employeeTitle"
 })
 export class EmployeeTitlePipe implements PipeTransform {
   transform(value: string, gender: string): string {
-    if (gender.toLowerCase() == 'male') {
+    if (gender.toLowerCase() == "male") {
       return "Mr." + value;
-    }
-    else {
+    } else {
       return "Miss." + value;
     }
   }
