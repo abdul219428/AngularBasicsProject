@@ -6,9 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'EventBindingDemo';
+  title = 'Angular Basics';
+  userText = 'JoJo';
+
   showDetails(): void {
     console.log('button clicked');
-
   }
 }
