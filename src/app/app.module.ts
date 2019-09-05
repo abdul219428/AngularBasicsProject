@@ -7,6 +7,7 @@ import { EmployeeListComponent } from './employee/employee-list/employee-list.co
 import { EmployeeTitlePipe } from './employee/employeeTitle.pipe';
 import { EmployeeCountComponent } from './employee/employee-count/employee-count.component';
 import { SimpleComponent } from './others/simple.component';
+import { EmployeeService } from './employee/employee.service';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { SimpleComponent } from './others/simple.component';
     EmployeeListComponent,
     EmployeeTitlePipe,
     EmployeeCountComponent,
-    SimpleComponent
+    SimpleComponent,
+
   ],
   imports: [BrowserModule, FormsModule],
   providers: [],
