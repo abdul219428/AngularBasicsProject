@@ -10,16 +10,16 @@ import { EmployeeService } from 'src/app/employee/employee.service';
   styleUrls: ['./employee-list.component.css'],
   providers: [EmployeeService]
 })
-export class EmployeeListComponent  implements OnInit {
-
+export class EmployeeListComponent implements OnInit {
   // tslint:disable-next-line: variable-name
   constructor(private _employeeService: EmployeeService) {
-    this.employees = this._employeeService.getEmployees();
+
   }
   employees: IEmployee[];
   selectedEmployeeCountRadioButton = 'All';
+
   ngOnInit(): void {
-    this.employees = this._employeeService.getEmployees();
+    this._employeeService.getEmployees().subscribe(employeeData => this.employees = employeeData);
   }
 
   onEmployeeCountRadioButtonChange(selectedRadioButtonValue: string): void {
