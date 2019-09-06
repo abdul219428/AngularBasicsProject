@@ -1,10 +1,10 @@
-import { Injectable } from "@angular/core";
-import { Http, Response } from "@angular/http";
-import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
-import { HttpClient } from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 // local imports
-import { IEmployee } from "./employee";
+import { IEmployee } from './employee';
 
 @Injectable() // for injecting dependenices i.e Http
 export class EmployeeService {
@@ -12,7 +12,7 @@ export class EmployeeService {
   constructor(private _http: Http) {}
   getEmployees(): Observable<IEmployee[]> {
     return this._http
-      .get("http://localhost:57238/api/employees/")
+      .get('http://localhost:57238/api/employees/')
       .pipe(map((response: Response) => response.json() as IEmployee[]));
 
     // return [

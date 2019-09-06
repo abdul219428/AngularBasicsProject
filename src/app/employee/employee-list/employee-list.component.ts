@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 // local imports
 import { IEmployee } from 'src/app/employee/employee';
 import { EmployeeService } from 'src/app/employee/employee.service';
+import { error } from 'util';
 
 @Component({
   selector: 'app-employee-list',
@@ -17,9 +18,13 @@ export class EmployeeListComponent implements OnInit {
   }
   employees: IEmployee[];
   selectedEmployeeCountRadioButton = 'All';
+  statusMessage: string = 'Loading data. Please Wait..';
 
   ngOnInit(): void {
-    this._employeeService.getEmployees().subscribe(employeeData => this.employees = employeeData);
+    this._employeeService.getEmployees().subscribe(employeeData => this.employees = employeeData, error => {
+      this.statusMessage = 'Problem with the service.. please try later';
+      console.error(error);
+    });
   }
 
   onEmployeeCountRadioButtonChange(selectedRadioButtonValue: string): void {
