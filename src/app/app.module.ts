@@ -18,6 +18,7 @@ import { RouterModule, Routes } from "@angular/router";
 const appRoutes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "employees", component: EmployeeListComponent },
+  { path: "employees/:code", component: EmployeeComponent },
   { path: "", redirectTo: "/home", pathMatch: "full" },
   { path: "**", component: PageNotFoundComponent }
 ];
@@ -38,7 +39,7 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

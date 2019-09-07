@@ -9,7 +9,7 @@ import { error } from 'util';
   selector: 'app-employee-list',
   templateUrl: './employee-list.component.html',
   styleUrls: ['./employee-list.component.css'],
-  providers: [EmployeeService]
+
 })
 export class EmployeeListComponent implements OnInit {
   // tslint:disable-next-line: variable-name

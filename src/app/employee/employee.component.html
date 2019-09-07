@@ -1,74 +1,34 @@
-<div class="container">
-  <table>
+<table *ngIf="employee">
+  <thead>
     <tr>
-      <td>
-        <table>
-          <tr>
-            <th>
-              First Name
-            </th>
-            <td>{{ firstName }}</td>
-          </tr>
-          <tr>
-            <th>
-              Last Name
-            </th>
-            <td>{{ lastName }}</td>
-          </tr>
-          <tr *ngIf="showDetails">
-            <th>Gender</th>
-            <td>{{ gender }}</td>
-          </tr>
-          <tr *ngIf="showDetails">
-            <th>
-              Age
-            </th>
-            <td>
-              {{ age }}
-            </td>
-          </tr>
-        </table>
-      </td>
-      <td>
-        <table>
-          <tr>
-            <th>
-              First Name
-            </th>
-            <td>
-              <input type="text" [(ngModel)]="firstName" />
-            </td>
-          </tr>
-          <tr>
-            <th>
-              Last Name
-            </th>
-            <td>
-              <input type="text" [(ngModel)]="lastName" />
-            </td>
-          </tr>
-          <tr *ngIf="showDetails">
-            <th>Gender</th>
-            <td>
-              <input type="text" [(ngModel)]="gender" />
-            </td>
-          </tr>
-          <tr *ngIf="showDetails">
-            <th>
-              Age
-            </th>
-            <td>
-              <input type="text" [(ngModel)]="age" />
-            </td>
-          </tr>
-        </table>
-      </td>
+      <th>
+        Code
+      </th>
+      <th>
+        Name
+      </th>
+      <th>
+        Gender
+      </th>
+      <th>
+        Annual Salary
+      </th>
+      <th>
+        Date of Birth
+      </th>
     </tr>
-  </table>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{ employee.code | uppercase }}</td>
+      <td>{{ employee.name | employeeTitle: employee.gender }}</td>
+      <td>{{ employee.gender }}</td>
+      <td>{{ employee.annualSalary | currency: "USD":true:"1.3-3" }}</td>
+      <td>{{ employee.dateOfBirth | date: "dd/MM/y" | uppercase }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="!employee">
+  {{ statusMessage }}
 </div>
-<div></div>
-<br />
-<button (click)="toggleDetails()">
-  {{ showDetails ? "Hide" : "Show" }}
-  Details
-</button>
