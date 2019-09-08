@@ -32,3 +32,21 @@
 <div *ngIf="!employee">
   {{ statusMessage }}
 </div>
+
+<div style="margin-top: 5px">
+  <input
+    type="button"
+    value="Back to Employees List"
+    class="btn btn-primary"
+    [routerLink]="['/employees']" routerLinkActive="router-link-active"
+  />
+</div>
+
+<div style="margin-top: 5px">
+  <input
+    type="button"
+    value="Cancel Request"
+    class="btn btn-primary"
+    (onclick)="cancelRequest()"
+  />
+</div>

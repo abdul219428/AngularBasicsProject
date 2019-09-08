@@ -1,30 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 // local imports
-import { IEmployee } from 'src/app/employee/employee';
-import { EmployeeService } from 'src/app/employee/employee.service';
-import { error } from 'util';
+import { IEmployee } from "src/app/employee/employee";
+import { EmployeeService } from "src/app/employee/employee.service";
+import { error } from "util";
+import { retry, retryWhen, delay } from "rxjs/operators/";
 
 @Component({
-  selector: 'app-employee-list',
-  templateUrl: './employee-list.component.html',
-  styleUrls: ['./employee-list.component.css'],
-
+  selector: "app-employee-list",
+  templateUrl: "./employee-list.component.html",
+  styleUrls: ["./employee-list.component.css"]
 })
 export class EmployeeListComponent implements OnInit {
   // tslint:disable-next-line: variable-name
-  constructor(private _employeeService: EmployeeService) {
-
-  }
+  constructor(private _employeeService: EmployeeService) {}
   employees: IEmployee[];
-  selectedEmployeeCountRadioButton = 'All';
-  statusMessage: string = 'Loading data. Please Wait..';
+  selectedEmployeeCountRadioButton = "All";
+  statusMessage: string = "Loading data. Please Wait..";
 
   ngOnInit(): void {
-    this._employeeService.getEmployees().subscribe(employeeData => this.employees = employeeData, error => {
-      this.statusMessage = 'Problem with the service.. please try later';
-      console.error(error);
-    });
+    this._employeeService
+      .getEmployees()
+      .pipe(retry(2))
+      .subscribe(
+        employeeData => (this.employees = employeeData),
+        error => {
+          this.statusMessage = "Problem with the service.. please try later";
+          console.error(error);
+        }
+      );
   }
 
   onEmployeeCountRadioButtonChange(selectedRadioButtonValue: string): void {
@@ -34,10 +38,10 @@ export class EmployeeListComponent implements OnInit {
     return this.employees.length;
   }
   getTotalMaleEmployeesCount(): number {
-    return this.employees.filter(e => e.gender === 'Male').length;
+    return this.employees.filter(e => e.gender === "Male").length;
   }
   getTotalFemaleEmployeesCount(): number {
-    return this.employees.filter(e => e.gender === 'Female').length;
+    return this.employees.filter(e => e.gender === "Female").length;
   }
 
   // getEmployees() {
